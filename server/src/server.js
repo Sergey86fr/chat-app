@@ -13,8 +13,25 @@ const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
+const allowedOrigins = [
+    ENV.CLIENT_URL,
+    'http://localhost:5173',
+    'http://localhost:3000',
+].filter(Boolean);
+
 app.use(express.json({ limit: "5mb" })); // req.body
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.warn('CORS blocked:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+}));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
