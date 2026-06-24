@@ -1,0 +1,107 @@
+:root {
+  --text: #989898;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --field-bg: #efefef;
+  --accent: #81dc76;
+  --accent-bg: rgb(218, 236, 208);
+  --social-bg: rgba(244, 243, 236, 0.5);
+
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #a0a0a0;
+    --text-h: #f0f0f0;
+    --bg: #121212;
+    --border: #2a2a2a;
+    --field-bg: #1e1e1e;
+    --accent: #60bb54;
+    --accent-bg:  rgb(29, 35, 29);
+    --social-bg: rgba(255, 255, 255, 0.05);
+  }
+
+
+
+
+  #root {
+    width: 1126px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+
+}
+
+
+html.dark {
+  --text: #a0a0a0;
+  --text-h: #f0f0f0;
+  --bg: #121212;
+  --border: #2a2a2a;
+  --field-bg: #1e1e1e;
+  --accent: #60bb54;
+  --accent-bg: rgb(29, 35, 29);
+  --social-bg: rgba(255, 255, 255, 0.05);
+}
+
+html.light {
+  --text: #989898;
+  --text-h: #08060d;
+  --bg: #ffffff;
+  --border: #e5e4e7;
+  --field-bg: #efefef;
+  --accent: #81dc76;
+  --accent-bg: rgb(218, 236, 208);
+  --social-bg: rgba(244, 243, 236, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-h);
+}
+
+input, textarea {
+  background-color: var(--field-bg);
+  border: 1px solid var(--border);
+}
+
+
+

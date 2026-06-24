@@ -1,0 +1,13 @@
+.toggleThemeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--text);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

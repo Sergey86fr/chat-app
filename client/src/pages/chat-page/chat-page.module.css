@@ -1,0 +1,43 @@
+.chatPage {
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*max-width: 100%;*/
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+@media(max-width: 767px) {
+
+
+    .sidebarWrapper {
+        max-width: 100%;
+
+    }
+
+    .chatContainer {
+        display: none; /* скрываем чат по умолчанию */
+        width: 100%;
+    }
+
+    /* Показываем чат на мобилке, если выбран пользователь */
+    .chatContainer.showOnMobile {
+        display: flex;
+    }
+
+    /* Скрываем сайдбар на мобилке, если выбран чат */
+    .sidebarWrapper.hiddenOnMobile {
+        display: none;
+    }
+
+    .chatContainer.hiddenOnMobile {
+        display: none;
+    }
+}
+
+
+

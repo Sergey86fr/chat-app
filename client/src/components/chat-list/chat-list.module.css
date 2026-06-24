@@ -1,0 +1,40 @@
+.chat {
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    padding: 5px;
+}
+
+.chat:hover {
+    background-color: var(--field-bg);
+}
+
+.chat.active {
+    background-color: var(--border);
+}
+
+
+.status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+
+
+.status.online {
+    background-color: #22c55e; /* green-500 */
+    /*background-color: #6b7280; !* gray-500 *!*/
+}
+
+.status.offline {
+    background-color: #6b7280; /* gray-500 */
+}

@@ -1,0 +1,175 @@
+.chatContainer {
+    flex: 1;
+    border-left: 1px solid var(--text);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 70vw;
+}
+
+
+.fieldChat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+   overflow: hidden;
+    /*padding: 20px;*/
+    /*background-color: #0f172a;*/
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.wrapperChat {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--accent-bg);
+    height: 100%;
+}
+
+.wrapperChatEmpty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-bg);
+    height: 100%;
+}
+
+.message {
+    display: flex;
+    width: 100%;
+    /*margin-bottom: 1rem;*/
+}
+
+/* Сообщение пользователя (слева) */
+.messageStart {
+    justify-content: flex-start;
+}
+
+/* Сообщение собеседника (справа) */
+.messageEnd {
+    justify-content: flex-end;
+
+}
+
+/* Контейнер бабла */
+.bubble {
+    max-width: 70%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+/* Стили для сообщения оппонента (слева) */
+.bubbleStart {
+    background-color: var(--bg); /* slate-800 */
+    color: var(--text-h); /* slate-200 */
+    border-bottom-left-radius: 0;
+}
+
+/* Стили для моего сообщения (справа) */
+.bubbleEnd {
+    background-color: var(--accent); /* cyan-600 */
+    color: var(--text-h);
+    border-bottom-right-radius: 0;
+}
+
+.bubbleEnd::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px; /* сдвиг вправо за пределы бабла */
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent transparent var(--accent) transparent ;
+}
+
+/* --- Треугольник для сообщений СОБЕСЕДНИКА (слева) --- */
+.bubbleStart::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px; /* сдвиг влево за пределы бабла */
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent  transparent var(--bg) transparent;
+}
+
+/* Изображение внутри сообщения */
+.messageImage {
+    width: 100px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+/* Текст сообщения */
+.messageText {
+    margin-top: 0.5rem;
+    word-wrap: break-word;
+}
+
+/* Время сообщения */
+.messageTime {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Пустой чат */
+.emptyChat {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+}
+
+/* Загрузка */
+.loading {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ошибка */
+.error {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ef4444;
+}
+
+/* Скролл */
+.wrapperChat::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wrapperChat::-webkit-scrollbar-track {
+    background: var(--field-bg);
+    border-radius: 10px;
+}
+
+.wrapperChat::-webkit-scrollbar-thumb {
+    background: var(--text);
+    border-radius: 10px;
+}
+
+/*.wrapperChat::-webkit-scrollbar-thumb:hover {*/
+/*    background: #64748b;*/
+/*}*/
