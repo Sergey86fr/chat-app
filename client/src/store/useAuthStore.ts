@@ -4,7 +4,8 @@ import type {User} from "../types/user.ts";
 import {Socket, io} from "socket.io-client";
 
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "/";
+//const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "/";
+export const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 interface useAuthState {
   authUser: User | null;
