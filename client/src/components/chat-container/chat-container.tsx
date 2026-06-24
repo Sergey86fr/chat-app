@@ -25,7 +25,7 @@ function ChatContainer({ className }: IChatContainerProps) {
 
     const{ isLoading, isError} = useMessages();
     const { authUser } = useAuthStore();
-    const messageEndRef = useRef(null);
+    const messageEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         subscribeToMessages();

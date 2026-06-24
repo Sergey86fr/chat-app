@@ -23,7 +23,7 @@ const Sidebar = ({className}: ISideBarProps) => {
     const {activeTab, setActiveTab, isSoundEnabled, toggleSound} = useChatStore();
     const {mutate: updateProfile} = useUpdateProfile();
 
-    const [profilePic, setProfilePic] = useState(null);
+    const [profilePic, setProfilePic] = useState<string | null>(null);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 

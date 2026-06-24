@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {type ChangeEvent, type FormEvent, useRef, useState} from "react";
 import toast from "react-hot-toast";
 import { ImageIcon, SendIcon, XIcon } from "lucide-react";
 import {useChatStore} from "../../store/useChatStore.ts";
@@ -10,13 +10,13 @@ function MessageInput() {
     const [text, setText] = useState("");
     const [imagePreview, setImagePreview] = useState<null|string>(null);
 
-    const fileInputRef = useRef(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const {  isSoundEnabled } = useChatStore();
 
     const{ mutate: sendMessage,} = useSendMessage()
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = (e: FormEvent) => {
         e.preventDefault();
         if (!text.trim() && !imagePreview) return;
         if (isSoundEnabled) playRandomKeyStrokeSound();
@@ -30,15 +30,23 @@ function MessageInput() {
         if (fileInputRef.current) fileInputRef.current.value = "";
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) {
+            toast.error("No file selected");
+            return;
+        }
         if (!file.type.startsWith("image/")) {
             toast.error("Please select an image file");
             return;
         }
 
         const reader = new FileReader();
-        reader.onloadend = () => setImagePreview(reader.result);
+        reader.onloadend = () => {
+            if (typeof reader.result === 'string') {
+                setImagePreview(reader.result);
+            }
+        };
         reader.readAsDataURL(file);
     };
 
@@ -54,7 +62,6 @@ function MessageInput() {
                     <div style={{position:"relative",width:80, height:80 }} className="relative">
                         <img
                             style={{width:"100%", height:"100%", objectFit:"cover", borderRadius:10}} src={imagePreview}
-                            src={imagePreview}
                             alt="Preview"
                             className="w-20 h-20 object-cover rounded-lg border border-slate-700"
                         />
