@@ -4,8 +4,8 @@ import type {User} from "../types/user.ts";
 import {Socket, io} from "socket.io-client";
 
 
-//const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "/";
-export const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+//const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : import.meta.env.VITE_API_URL;
+
 
 interface useAuthState {
   authUser: User | null;
@@ -39,7 +39,7 @@ export const useAuthStore = create<useAuthState>((set, get) => ({
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
 
-    const socket = io(BASE_URL, {
+    const socket = io(import.meta.env.VITE_API_URL, {
       withCredentials: true, // this ensures cookies are sent with the connection
     });
 
