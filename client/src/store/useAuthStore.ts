@@ -41,7 +41,7 @@ export const useAuthStore = create<useAuthState>((set, get) => ({
 
     const socket = io(import.meta.env.VITE_API_URL, {
       withCredentials: true, // this ensures cookies are sent with the connection
-      transports: ['websocket', 'polling'],
+      transports: [ 'polling'],
     });
 
     socket.connect();
