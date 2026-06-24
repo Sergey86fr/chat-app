@@ -41,12 +41,38 @@ export const useAuthStore = create<useAuthState>((set, get) => ({
 
     const socket = io(import.meta.env.VITE_API_URL, {
       withCredentials: true, // this ensures cookies are sent with the connection
-      transports: [ 'polling'],
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionAttempts: 10,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      randomizationFactor: 0.5,
+      forceNew: true,
+      autoConnect: true,
     });
 
     socket.connect();
 
     set({ socket });
+
+    socket.on("connect_error", (error) => {
+      console.log("⚠️ Socket connection error:", error);
+      if (error.message === "Session ID unknown") {
+        socket.disconnect();
+        setTimeout(() => {
+          console.log("🔄 Reconnecting with new session...");
+          socket.connect();
+        }, 1000);
+      }
+    });
+
+    socket.on("connect", () => {
+      console.log("✅ Socket connected successfully");
+    });
+
+    socket.on("disconnect", (reason) => {
+      console.log("🔌 Socket disconnected:", reason);
+    });
 
     // listen for online users event
     socket.on("getOnlineUsers", (userIds) => {
